@@ -11,7 +11,7 @@ PACKAGES=(
 
 apt-get install -y --no-install-recommends ${PACKAGES[@]}
 
-cd /usr/src/app/
+mkdir -p /usr/src/app && cd /usr/src/app/
 mkdir -p build && cd build
 
 # Clone the latest code from GitHub
@@ -19,8 +19,7 @@ git clone --depth 1 https://github.com/openalpr/openalpr.git openalpr
 
 # Setup the build directory
 cd openalpr/src/
-mkdir -p build
-cd build
+mkdir -p build && cd build
 
 # Setup the compile environment
 cmake -DWITH_TESTS=FALSE -DWITH_BINDING_JAVA=FALSE --DWITH_BINDING_PYTHON=FALSE --DWITH_BINDING_GO=FALSE -DWITH_DAEMON=FALSE -DCMAKE_INSTALL_PREFIX:PATH=/usr/local ..
